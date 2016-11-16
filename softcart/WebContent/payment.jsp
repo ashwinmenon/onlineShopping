@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" import="logic.*"%>
-<jsp:useBean id= "prodlist" scope= "page"  class= "logic.ProductSort" type= "logic.ProductSort" >  </jsp:useBean>
 <%
 UserDetails user = (UserDetails)request.getSession().getAttribute("user");
 if(user==null){
@@ -21,7 +20,7 @@ else if(user.getRole().equals("user"))
 <html lang="en">
 <head>
   <title>Soft Cart</title>
-  <meta charset="utf-8">
+    <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -72,22 +71,21 @@ else if(user.getRole().equals("user"))
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="index.jsp">Home</a></li>
+      <li class="active"><a href="index.jsp">Home</a></li>
         <li><a href="index.jsp">Products</a></li>
         <li><a href="wishlist.jsp">Wish List</a></li>
         <li><a href="orderhistory.jsp">Order History</a></li>
-        
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
 <li>
 <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">
 <span class="glyphicon glyphicon-user"></span> <%= user.getUsername() %>
 <span class="caret"></span></button>
   <ul class="dropdown-menu">
-    <li><a href="userprofile.jsp">Profile</a></li>
+     <li><a href="userprofile.jsp">Profile</a></li>
     <li><a href="orderhistory.jsp">Order History</a></li>
     <li><a href="logout.jsp">logout</a></li>
+    
   </ul>
 
   
@@ -98,87 +96,68 @@ else if(user.getRole().equals("user"))
     </div>
   </div>
 </nav>
-
+</head>
+<body>
 <div class="col-sm-12">
-<div class="col-sm-2">
-<div id="mySidenav" class="sidenav">
+<h1>Payment Gateway SoftCart</h1>
 <div class="row">
+<div class="col-sm-3"></div>
+<div class="col-sm-6">
+<h3>Payment Mode</h3>
+
 <form>
-<div class="checkbox">
-  <label><input type="checkbox" name="pop" >popularity</label>
-</div><br>
-
-<div class="checkbox">
-  <label> category</label>
-  <div class="radio">
-  <label><input type="radio" name="cat" value="mobile">Electronics</label>
-</div>
-<div class="radio">
-  <label><input type="radio" name="cat" value="clothing">Clothing</label>
-</div>
-<div class="radio">
-  <label><input type="radio" name="cat" value="furniture">Furniture</label>
-</div>
-<div class="radio">
-  <label><input type="radio" name="cat" value="books">Books</label>
-</div>
-</div><br>
-<div class="checkbox">
-  <label>price</label>
-  <div class="radio">
-  <label><input type="radio" name="price" value=1000> &lt;1000</label>
-</div>
-<div class="radio">
-  <label><input type="radio" name="price" value=5000>&lt;5000</label>
-</div>
-<div class="radio">
-  <label><input type="radio" name="price" value=100000>&gt;5000</label>
-</div>
-</div>
-<input type="submit" value="search"/>
-<input type="reset" value="refresh"/>
-</form>
-</div>
-</div>
-</div>
-<div class="col-sm-10">
-<div class="container">
-  <div class="row">
-  <div class="col-sm-12">
+<select class="span3" name="paymode">
  
-<%
-
-String pop=request.getParameter("pop");
-String price=request.getParameter("price");
-String cat=request.getParameter("cat");
- %>
-  <%  for (ProductDetails pd : prodlist.getProduct(pop,cat,price)) {%>
- 
-    <div class="col-sm-4">
-      <div class="panel panel-primary">
-        <div class="panel-heading" id="phead"><%= pd.getName() %></div>
-        <div class="panel-body"><img src="<%= pd.getImage() %>" class="img-responsive" style="width:100%" alt="Image"></div>
-        <div class="panel-footer">Price: <%= pd.getPrice() %></div>
-        <div class="panel-footer">
-        
-        <a href="LogServlet?log=cart&userid=<%= user.getId()%>&prodid=<%= pd.getId() %>" class="btn btn-info" role="button">Add to Cart</a>
-        <a href="LogServlet?log=wish&userid=<%= user.getId()%>&prodid=<%= pd.getId() %>" class="btn btn-info" role="button">WishList</a>
-        </div>
-      </div>
-    </div>
-   <%  }%>
-    </div>
-  </div>
-</div>
-</div>
-</div>
+    <option value="credit">Credit Card</option>
+    <option value="debit">Debit Card</option>
+  </select>
+<br>
+Name on Card:<input type="text" name="cardname"/><br>
+Card No:<input type="text" name="cardno"/><br>
+Card Expiry Date: 
+<select class="span3" name="expiry_month" id="expiry_month">
+                <option></option>
+                <option value="01">Jan (01)</option>
+                <option value="02">Feb (02)</option>
+                <option value="03">Mar (03)</option>
+                <option value="04">Apr (04)</option>
+                <option value="05">May (05)</option>
+                <option value="06">June (06)</option>
+                <option value="07">July (07)</option>
+                <option value="08">Aug (08)</option>
+                <option value="09">Sep (09)</option>
+                <option value="10">Oct (10)</option>
+                <option value="11">Nov (11)</option>
+                <option value="12">Dec (12)</option>
+              </select>
+              <select class="span2" name="expiry_year">
+                <option value="13">2013</option>
+                <option value="14">2014</option>
+                <option value="15">2015</option>
+                <option value="16">2016</option>
+                <option value="17">2017</option>
+                <option value="18">2018</option>
+                <option value="19">2019</option>
+                <option value="20">2020</option>
+                <option value="21">2021</option>
+                <option value="22">2022</option>
+                <option value="23">2023</option>
+              </select><br>
+Card CVV: <input type="password" name="cardno"/>
+<br>
+----OR---
 <br>
 
-
-<footer class="container-fluid text-center">
-  <p>SoftCart Copyright. || Built for case study.</p>
-  
-</footer>
-
+  <label><input type="radio" name="cod">Cash On Delivery</label><br>
+<input type="submit" value="checkout1" name="log" />
+</form>
+</div>
+<div class="col-sm-3">
+Order Details:<br>
+<%=request.getParameter("idUser")%>
+<%=request.getParameter("orders")%>
+<%=request.getParameter("total")%>
+<%=request.getParameter("optradio")%>
+</div>
 </body>
 </html>
