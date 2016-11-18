@@ -1,0 +1,33 @@
+create sequence prod_id start with 1000 increment by 1;
+create sequence user_id start with 100 increment by 1;
+create sequence tran_id start with 10000 increment by 5;
+create sequence ord_id start with 50000 increment by 15;
+
+insert into orders (id,iduser,pay,orders,total ) values (ord_id.nextval,12,'no pay','sdsd',3444);
+
+insert into products values(prod_id.nextval,'canon','camera',5000,'mobile',default,'./images/prod2.jpg');
+insert into products values(prod_id.nextval,'HP Passion','Laptop',35000,'mobile',default,'./images/prod3.png');
+insert into products values(prod_id.nextval,'Nokia','Phone',7000,'mobile',default,'./images/prod4.png');
+insert into products values(prod_id.nextval,'Oppo','Phone',18000,'mobile',default,'./images/op.jpg');
+insert into products values(prod_id.nextval,'Philips','hair dryer',990,'mobile',default,'./images/hd.jpg');
+insert into products values(prod_id.nextval,'Dell XPS 15','Laptop',35000,'mobile',default,'./images/dell.jpg');
+insert into products values(prod_id.nextval,'Panasonic HD','Television',48990,'mobile',default,'./images/ps.jpg');
+
+
+insert into products values(prod_id.nextval,'Vivaha','Silk Saree',55000,'clothing',default,'./images/sar.jpg');
+insert into products values(prod_id.nextval,'Annabelle','Shirt',700,'clothing',default,'./images/ab.jpg');
+insert into products values(prod_id.nextval,'Aurelia','Kurthi',1500,'clothing',default,'./images/au.jpg');
+insert into products values(prod_id.nextval,'Peter England','Shirt',2000,'clothing',default,'./images/pe.jpg');
+insert into products values(prod_id.nextval,'Manyavar','Sherwani',25550,'clothing',default,'./images/sher.jpg');
+insert into products values(prod_id.nextval,'Fab India','Lehenga',5999,'clothing',default,'./images/leh.jpg');
+
+
+insert into products values(prod_id.nextval,'Kosmo Crescent','Wardrobe',13899,'furniture',default,'./images/kos.jpg');
+insert into products values(prod_id.nextval,'Oroville six seater','Dining set',32199,'furniture',default,'./images/or.jpg');
+insert into products values(prod_id.nextval,'Baggo','Beanbag',700,'furniture',default,'./images/bean.jpg');  
+
+
+insert into products values(prod_id.nextval,'Life is What You Make it','Novel',199,'books',default,'./images/life.jpg');
+insert into products values(prod_id.nextval,'Archie','Comics',350,'books',default,'./images/archie.jpg');
+insert into products values(prod_id.nextval,'Making India Awesome','Essays',756,'books',default,'./images/cb.jpg');
+insert into products values(prod_id.nextval,'Britannica','Encyclopaedia',3000,'books',default,'./images/ency.jpg');
