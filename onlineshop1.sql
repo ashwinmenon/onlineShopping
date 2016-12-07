@@ -57,7 +57,7 @@ CREATE TABLE transactions
   description varchar(400) NOT NULL,
 
   price number NOT NULL,
-
+ status number(1) DEFAULT 0,
  image varchar(200) DEFAULT NULL,
 
   PRIMARY KEY (id)
